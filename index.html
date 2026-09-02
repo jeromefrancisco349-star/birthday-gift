@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- START / ERROR WINDOW -->
+    <section class="screen" id="startScreen">
+      <div class="win error-window">
+        <div class="titlebar">
+          <span>birthday.exe</span>
+          <span>— □ ×</span>
+        </div>
+        <div class="error-body">
+          <div class="pixel-cake">🎂</div>
+          <div>
+            <h2>OOOPS ERROR!</h2>
+            <p>Try it, please.</p>
+            <div class="btn-row">
+              <button onclick="startGift()">Start</button>
+              <button onclick="ignoreGift()">Ignore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOADING -->
+    <section class="screen hidden" id="loadingScreen">
+      <div class="win loading-window">
+        <div class="titlebar"><span>loading.exe</span><span>×</span></div>
+        <div class="loading-body">
+          <div class="progress"><span id="progressBar"></span></div>
+          <button class="text-btn" onclick="finishLoading()">TAP TO LOAD</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN MENU -->
+    <section class="screen hidden main-screen" id="menuScreen">
+      <div class="menu-card">
+        <p class="tiny">WELCOME TO YOUR LITTLE WORLD ♡</p>
+        <h1>happy birthday,<br><em>my love</em></h1>
+        <p class="sub">choose a little surprise</p>
+
+        <div class="icon-menu">
+          <button class="menu-icon" onclick="openPage('musicPage')">
+            <span class="pixel-disc">●</span><small>music</small>
+          </button>
+          <button class="menu-icon" onclick="openPage('photosPage')">
+            <span>📷</span><small>memories</small>
+          </button>
+          <button class="menu-icon" onclick="openPage('letterPage')">
+            <span>✉</span><small>letter</small>
+          </button>
+          <button class="menu-icon" onclick="openPage('surprisePage')">
+            <span>?</span><small>surprise</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section class="screen hidden" id="musicPage">
+      <div class="win content-window">
+        <div class="titlebar"><span>playlist.exe</span><button onclick="goHome()">×</button></div>
+        <div class="music-layout">
+          <div class="playlist">
+            <div class="playlist-head">♡ Playlist for my love!</div>
+            <p>some songs that remind me of you</p>
+            <ol>
+              <li>A Couple Minutes</li>
+              <li>Nobody But You</li>
+              <li>Fallingforyou</li>
+            </ol>
+            <button onclick="toggleMusic()" id="musicBtn">▶ Play my song</button>
+            <audio id="audio" src="music.mp3" loop></audio>
+          </div>
+          <div class="record"><div class="label">♥</div><div class="hole"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="screen hidden" id="photosPage">
+      <div class="win content-window">
+        <div class="titlebar"><span>your-seasons.exe</span><button onclick="goHome()">×</button></div>
+        <div class="photos-content">
+          <div class="season-title">your<br><strong>Seasons</strong></div>
+          <div class="photo-grid">
+            <img src="photo1.jpg" alt="Memory 1">
+            <img src="photo2.jpg" alt="Memory 2">
+            <img src="photo3.jpg" alt="Memory 3">
+            <img src="photo4.jpg" alt="Memory 4">
+            <img src="photo5.jpg" alt="Memory 5">
+            <img src="photo6.jpg" alt="Memory 6">
+          </div>
+          <p class="caption">cheers to every<br>version of you ♡</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="screen hidden" id="letterPage">
+      <div class="win content-window">
+        <div class="titlebar"><span>a-letter-for-you.txt</span><button onclick="goHome()">×</button></div>
+        <div class="letter">
+          <div class="letter-text">
+            <p>To my special one,</p>
+            <p>
+              Today is all about celebrating you — the person who makes my days
+              brighter, my heart happier, and my life a little more beautiful.
+              I'm so grateful that I get to know you, love you, and be part of your life.
+            </p>
+            <p>
+              As you start another year of your life, I hope you achieve the things
+              you've been dreaming of. I hope you continue to grow, learn, and become
+              the person you want to be.
+            </p>
+            <p>
+              Whenever life gets difficult, I hope you remember that you don't have
+              to face everything alone. I'll always be here to support you, listen to
+              you, and cheer for you.
+            </p>
+            <p>
+              Happy birthday, baby. I hope this year brings you happiness, success,
+              peace, and everything you deserve.
+            </p>
+            <p class="signature">I love you ♡</p>
+          </div>
+          <div class="bouquet">💐</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SURPRISE -->
+    <section class="screen hidden" id="surprisePage">
+      <div class="win surprise-window">
+        <div class="titlebar"><span>secret.exe</span><button onclick="goHome()">×</button></div>
+        <div class="surprise-body">
+          <div id="giftBox" onclick="openGiftBox()">🎁</div>
+          <h2 id="surpriseTitle">A little surprise...</h2>
+          <p id="surpriseText">Click the gift.</p>
+          <button onclick="openGiftBox()">OPEN ♡</button>
+        </div>
+      </div>
+    </section>
+
+    <button class="home-btn hidden" id="homeBtn" onclick="goHome()">⌂ home</button>
+    <div id="hearts"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
