@@ -1,160 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday, My Love ♡</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday, My Love</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:#18232b;
+background:linear-gradient(#b8e9f7,#c9f0e8 55%,#b6df9a);min-height:100vh}
+main{max-width:760px;margin:auto;padding:55px 18px}
+.hero{text-align:center;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.kicker{font:13px monospace;letter-spacing:6px}.heart{font-size:22px;margin:10px}
+h1{font-size:clamp(52px,14vw,90px);line-height:.84;font-weight:500;margin:35px 0 22px}
+h1 em{font-weight:400}.sub{font:17px monospace;letter-spacing:2px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:38px auto 0;max-width:500px}
+.card{background:#ffffff9e;border:0;padding:28px 10px;min-height:145px;font:16px monospace;cursor:pointer}
+.icon{display:block;font:52px Arial;margin-bottom:10px}.card:hover{background:#fff}
+section{padding:45px 0}.panel{background:#ffffffb8;padding:25px;border-radius:22px;box-shadow:0 8px 25px #5673  }
+h2{text-align:center;font-size:34px;font-weight:500;margin:0 0 20px}
+.music{text-align:center;font:16px monospace}.play{border:1px solid #223;border-radius:25px;background:white;padding:12px 22px;font:15px monospace;cursor:pointer;margin-top:14px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gallery img{width:100%;height:250px;object-fit:cover;border-radius:15px;cursor:pointer}
+.letter{text-align:center;font-size:18px;line-height:1.8}.surprise{text-align:center;font:16px monospace}
+.back{display:block;text-align:center;margin-top:22px;color:#18232b;font:14px monospace}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:9}
+.modal.show{display:flex}.modal img{max-width:96vw;max-height:90vh;border-radius:14px}.close{position:fixed;right:20px;top:10px;color:#fff;font:36px Arial}
+@media(max-width:500px){main{padding-top:25px}.hero{min-height:95vh}.gallery img{height:220px}}
+</style>
 </head>
 <body>
-  <div id="app">
+<main>
+<section class="hero" id="home">
+<div class="kicker">WELCOME TO YOUR LITTLE WORLD</div><div class="heart">♡</div>
+<h1>happy<br>birthday,<br><em>my love</em></h1>
+<div class="sub">choose a little surprise</div>
+<div class="cards">
+<button class="card" onclick="location.hash='music'"><span class="icon">◉</span>music</button>
+<button class="card" onclick="location.hash='memories'"><span class="icon">📷</span>memories</button>
+<button class="card" onclick="location.hash='letter'"><span class="icon">✉</span>letter</button>
+<button class="card" onclick="location.hash='surprise'"><span class="icon">?</span>surprise</button>
+</div>
+</section>
 
-    <!-- START / ERROR WINDOW -->
-    <section class="screen" id="startScreen">
-      <div class="win error-window">
-        <div class="titlebar">
-          <span>birthday.exe</span>
-          <span>— □ ×</span>
-        </div>
-        <div class="error-body">
-          <div class="pixel-cake">🎂</div>
-          <div>
-            <h2>OOOPS ERROR!</h2>
-            <p>Try it, please.</p>
-            <div class="btn-row">
-              <button onclick="startGift()">Start</button>
-              <button onclick="ignoreGift()">Ignore</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="music"><div class="panel">
+<h2>Our song</h2>
+<div class="music">Bawat Daan — Ebe Dancel<br>
+<button class="play" onclick="toggleMusic()" id="playBtn">▶ Play my song</button></div>
+<audio id="audio" loop src="music/bawat-daan.mp3"></audio>
+<p style="text-align:center;font:12px monospace;opacity:.65;margin-top:18px">Add your MP3 as <b>music/bawat-daan.mp3</b> before uploading the site.</p>
+<a class="back" href="#home">↑ back</a>
+</div></section>
 
-    <!-- LOADING -->
-    <section class="screen hidden" id="loadingScreen">
-      <div class="win loading-window">
-        <div class="titlebar"><span>loading.exe</span><span>×</span></div>
-        <div class="loading-body">
-          <div class="progress"><span id="progressBar"></span></div>
-          <button class="text-btn" onclick="finishLoading()">TAP TO LOAD</button>
-        </div>
-      </div>
-    </section>
+<section id="memories"><div class="panel">
+<h2>Our memories</h2>
+<div class="gallery">
+<img src="images/memory1.jpg" onclick="openImg(this.src)"><img src="images/memory2.jpg" onclick="openImg(this.src)">
+<img src="images/memory3.jpg" onclick="openImg(this.src)"><img src="images/memory4.jpg" onclick="openImg(this.src)">
+<img src="images/memory5.jpg" onclick="openImg(this.src)"><img src="images/memory6.jpg" onclick="openImg(this.src)">
+</div><a class="back" href="#home">↑ back</a>
+</div></section>
 
-    <!-- MAIN MENU -->
-    <section class="screen hidden main-screen" id="menuScreen">
-      <div class="menu-card">
-        <p class="tiny">WELCOME TO YOUR LITTLE WORLD ♡</p>
-        <h1>happy birthday,<br><em>my love</em></h1>
-        <p class="sub">choose a little surprise</p>
+<section id="letter"><div class="panel letter">
+<h2>For you ♡</h2>
+<p>Happy birthday, my love! I hope this little website makes you smile. Thank you for being someone so special to me. I’m grateful for every memory we share, and I hope we can make many more.</p>
+<p>Enjoy your day. You deserve all the happiness in the world. ♡</p>
+<a class="back" href="#home">↑ back</a>
+</div></section>
 
-        <div class="icon-menu">
-          <button class="menu-icon" onclick="openPage('musicPage')">
-            <span class="pixel-disc">●</span><small>music</small>
-          </button>
-          <button class="menu-icon" onclick="openPage('photosPage')">
-            <span>📷</span><small>memories</small>
-          </button>
-          <button class="menu-icon" onclick="openPage('letterPage')">
-            <span>✉</span><small>letter</small>
-          </button>
-          <button class="menu-icon" onclick="openPage('surprisePage')">
-            <span>?</span><small>surprise</small>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- MUSIC -->
-    <section class="screen hidden" id="musicPage">
-      <div class="win content-window">
-        <div class="titlebar"><span>playlist.exe</span><button onclick="goHome()">×</button></div>
-        <div class="music-layout">
-          <div class="playlist">
-            <div class="playlist-head">♡ Playlist for my love!</div>
-            <p>some songs that remind me of you</p>
-            <ol>
-              <li>A Couple Minutes</li>
-              <li>Nobody But You</li>
-              <li>Fallingforyou</li>
-            </ol>
-            <button onclick="toggleMusic()" id="musicBtn">▶ Play my song</button>
-            <audio id="audio" src="music.mp3" loop></audio>
-          </div>
-          <div class="record"><div class="label">♥</div><div class="hole"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PHOTOS -->
-    <section class="screen hidden" id="photosPage">
-      <div class="win content-window">
-        <div class="titlebar"><span>your-seasons.exe</span><button onclick="goHome()">×</button></div>
-        <div class="photos-content">
-          <div class="season-title">your<br><strong>Seasons</strong></div>
-          <div class="photo-grid">
-            <img src="photo1.jpg" alt="Memory 1">
-            <img src="photo2.jpg" alt="Memory 2">
-            <img src="photo3.jpg" alt="Memory 3">
-            <img src="photo4.jpg" alt="Memory 4">
-            <img src="photo5.jpg" alt="Memory 5">
-            <img src="photo6.jpg" alt="Memory 6">
-          </div>
-          <p class="caption">cheers to every<br>version of you ♡</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- LETTER -->
-    <section class="screen hidden" id="letterPage">
-      <div class="win content-window">
-        <div class="titlebar"><span>a-letter-for-you.txt</span><button onclick="goHome()">×</button></div>
-        <div class="letter">
-          <div class="letter-text">
-            <p>To my special one,</p>
-            <p>
-              Today is all about celebrating you — the person who makes my days
-              brighter, my heart happier, and my life a little more beautiful.
-              I'm so grateful that I get to know you, love you, and be part of your life.
-            </p>
-            <p>
-              As you start another year of your life, I hope you achieve the things
-              you've been dreaming of. I hope you continue to grow, learn, and become
-              the person you want to be.
-            </p>
-            <p>
-              Whenever life gets difficult, I hope you remember that you don't have
-              to face everything alone. I'll always be here to support you, listen to
-              you, and cheer for you.
-            </p>
-            <p>
-              Happy birthday, baby. I hope this year brings you happiness, success,
-              peace, and everything you deserve.
-            </p>
-            <p class="signature">I love you ♡</p>
-          </div>
-          <div class="bouquet">💐</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SURPRISE -->
-    <section class="screen hidden" id="surprisePage">
-      <div class="win surprise-window">
-        <div class="titlebar"><span>secret.exe</span><button onclick="goHome()">×</button></div>
-        <div class="surprise-body">
-          <div id="giftBox" onclick="openGiftBox()">🎁</div>
-          <h2 id="surpriseTitle">A little surprise...</h2>
-          <p id="surpriseText">Click the gift.</p>
-          <button onclick="openGiftBox()">OPEN ♡</button>
-        </div>
-      </div>
-    </section>
-
-    <button class="home-btn hidden" id="homeBtn" onclick="goHome()">⌂ home</button>
-    <div id="hearts"></div>
-  </div>
-
-  <script src="script.js"></script>
+<section id="surprise"><div class="panel surprise">
+<h2>A little surprise</h2><p>There are still many memories waiting for us. This is only the beginning. ♡</p>
+<a class="back" href="#home">↑ back</a></div></section>
+<footer>made with love ♡</footer>
+</main>
+<div class="modal" id="modal" onclick="closeImg()"><span class="close">×</span><img id="modalImg"></div>
+<script>
+const audio=document.getElementById('audio'),btn=document.getElementById('playBtn');
+function toggleMusic(){if(audio.paused){audio.play();btn.textContent='❚❚ Pause music'}else{audio.pause();btn.textContent='▶ Play my song'}}
+function openImg(src){document.getElementById('modalImg').src=src;document.getElementById('modal').classList.add('show')}
+function closeImg(){document.getElementById('modal').classList.remove('show')}
+</script>
 </body>
 </html>
